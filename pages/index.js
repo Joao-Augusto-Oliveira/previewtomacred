@@ -57,10 +57,12 @@ export default function Home() {
 
   return (
     <>
+      <header className={styles.headerContainer}>
+            <img src="/logo.svg" alt="logo tomacred"/>
+      </header>
+      
       <section className={styles.timer}>
-        <div className={styles.text}>
-          <h2> 🚀 Novidades <span>em breve!</span></h2>
-        </div>
+          <span>🚀 Novidades em breve!</span>
         <div className={styles.countdown}>
           <section>
             <p>{timerDays}</p>

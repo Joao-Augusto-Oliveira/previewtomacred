@@ -1,32 +1,36 @@
+.headerContainer {
+    height: 7rem;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 15rem;
+    }
+}
+
 .timer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 3em;
+    padding-top: 1.5rem;
     width: 100%;
-    height: 100%;
-        
-    .text {
-        text-align: center;
-    
-        h2 {
-            font-weight: 800;
-            margin-bottom: 0.5em;
-            color: #0A1139;            
-
-            span {
-                color: #7069FC;
-                font-weight: 400;
-            }
-        }
-    }
+    height: 100%;       
+       
+        span {
+            color: #7069FC;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #0A1139;   
+            }           
     
     .countdown{
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        margin-top: 1em;
-        padding: 3em;
+        margin-top: 1rem;
+        padding: 1rem;
         text-align: center;
         align-items: center;      
      }     
@@ -34,7 +38,7 @@
 }  
 
 .btnWhatsapp a {
-    margin: 5rem 0;
+    margin: 2rem 0;
     width: 15rem;
     height: 5.2rem;
     border-radius: 0.8rem;
@@ -65,6 +69,7 @@
 
 .footer {
     font-size: 0.8rem;
+    margin-top: 2rem;
 
 }
 
