@@ -1,0 +1,75 @@
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3em;
+    width: 100%;
+    height: 100%;
+        
+    .text {
+        text-align: center;
+    
+        h2 {
+            font-weight: 800;
+            margin-bottom: 0.5em;
+            color: #0A1139;            
+
+            span {
+                color: #7069FC;
+                font-weight: 400;
+            }
+        }
+    }
+    
+    .countdown{
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        margin-top: 1em;
+        padding: 3em;
+        text-align: center;
+        align-items: center;      
+     }     
+    
+}  
+
+.btnWhatsapp a {
+    margin: 5rem 0;
+    width: 15rem;
+    height: 5.2rem;
+    border-radius: 0.8rem;
+    font: 400 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    text-decoration: none;
+    color: #fff;
+    background-color:  #7069FC;
+    transition: filter 0.2s;
+
+    &:hover {
+        filter: brightness(0.8);
+    }
+
+}  
+
+.btnWhatsapp a img {
+        width: 2rem;
+        margin-right: 1rem;
+    }
+    
+.timer section p:first-child, .timer div:last-child span {
+    font-size: 3rem;
+    color: #7069FC;
+}  
+
+.footer {
+    font-size: 0.8rem;
+
+}
+
+
+
+
+
+

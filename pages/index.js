@@ -1,65 +1,113 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import lottie from 'lottie-web';
+import { useEffect, useRef, useState } from 'react';
+import styles from './home.module.scss';
 
 export default function Home() {
+
+  const [timerDays, setTimerDays] = useState('00');
+  const [timerHours, setTimerHours] = useState('00');
+  const [timerMinutes, setTimerMinutes] = useState('00');
+  const [timerSeconds, setTimerSeconds] = useState('00');
+
+  let interval = useRef();
+
+  const startTimer = () => {
+    const countdownDate = new Date('June 24, 2021 00:00:00').getTime();
+
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance < 0) {
+        // stop our timer
+        clearInterval(interval.current);
+      } else {
+        // update timer
+        setTimerDays(days);
+        setTimerHours(hours);
+        setTimerMinutes(minutes);
+        setTimerSeconds(seconds);
+      }
+    }, 1000)
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => {
+      clearInterval(interval.current);
+    };
+  });
+
+  const container = useRef(null)
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: container.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: require('./devs.json')
+    })
+  }, [])
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
+    <>
+      <section className={styles.timer}>
+        <div className={styles.text}>
+          <h2> 🚀 Novidades <span>em breve!</span></h2>
+        </div>
+        <div className={styles.countdown}>
+          <section>
+            <p>{timerDays}</p>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              <small>Dias</small>
             </p>
+          </section>
+          <span>:</span>
+
+          <section>
+            <p>{timerHours}</p>
+            <p>
+              <small>Horas</small>
+            </p>
+          </section>
+          <span>:</span>
+
+          <section>
+            <p>{timerMinutes}</p>
+            <p>
+              <small>Minutos</small>
+            </p>
+          </section>
+          <span>:</span>
+
+          <section>
+            <p>{timerSeconds}</p>
+            <p>
+              <small>Segundos</small>
+            </p>
+          </section>
+
+        </div>    
+
+        <div className="container" ref={container} />
+
+        <div className={styles.btnWhatsapp}>
+          <a href="https://api.whatsapp.com/send?phone=5511942267400&text=Gostaria%20de%20informações%20sobre%20a%20Tomacred.">
+            <img src="/whatsapp.svg" alt="Whatsapp" />
+                Saiba mais
           </a>
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+        <footer className={styles.footer}>Copyright © 2021 TOMA CRED. Todos os direitos reservados.</footer>
+
+      </section>
+
+    </>
   )
 }
