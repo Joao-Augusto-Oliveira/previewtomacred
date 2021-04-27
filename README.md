@@ -2,13 +2,13 @@
 
 <h3>
 
-Contagem regressiva para o lançamento do site da Tomacred, com **NextJS**, **Sass** e **Lottie**.
+Contagem regressiva com **NextJS**, **Sass** e **Lottie**.
 
 </h3>
 
 <br>
 
-![PRINTS](./layouts/home.gif)
+![PRINTS](./layouts/preview.gif)
 
 </div>
 
